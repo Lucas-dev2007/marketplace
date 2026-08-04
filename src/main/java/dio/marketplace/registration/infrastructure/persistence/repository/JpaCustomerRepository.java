@@ -2,7 +2,7 @@ package dio.marketplace.registration.infrastructure.persistence.repository;
 
 import dio.marketplace.registration.domain.Customer;
 import dio.marketplace.registration.domain.CustomerId;
-import dio.marketplace.registration.domain.CustumerRepository;
+import dio.marketplace.registration.domain.CustomerRepository;
 import org.springframework.stereotype.Repository;
 
 
@@ -13,27 +13,27 @@ import java.util.stream.StreamSupport;
 
 
 @Repository
-public class JpaCustumerRepository implements CustumerRepository {
+public class JpaCustomerRepository implements CustomerRepository {
 
-    private final CustumerEntityRepository custumerEntityRepository;
+    private final CustomerEntityRepository customerEntityRepository;
 
-    public JpaCustumerRepository(CustumerEntityRepository custumerEntityRepository) {
-        this.custumerEntityRepository = custumerEntityRepository;
+    public JpaCustomerRepository(CustomerEntityRepository customerEntityRepository) {
+            this.customerEntityRepository = customerEntityRepository;
     }
 
 
     @Override
     public Customer save(Customer customer) {
         var entity = mapper(customer);
-        custumerEntityRepository.save(entity);
+        customerEntityRepository.save(entity);
         return customer;
     }
 
     @Override
-    public List<Customer> FindALL() {
-        var iterable = custumerEntityRepository.findAll();
+    public List<Customer> findAll() {
+        var iterable = customerEntityRepository.findAll();
         return StreamSupport.stream(iterable.spliterator(), false)
-                .map(JpaCustumerRepository::mapper)
+                .map(JpaCustomerRepository::mapper)
                 .toList();
 
     }

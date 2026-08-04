@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RepositoryRestResource(excerptProjection = CustomerExcerpt.class)
-public interface CustumerEntityRepository extends PagingAndSortingRepository<Customer, UUID>, CrudRepository<Customer, UUID> {
+public interface CustomerEntityRepository extends PagingAndSortingRepository<Customer, UUID>, CrudRepository<Customer, UUID> {
 
     List<Customer> findByFirstNameStartingWithIgnoreCase(@Param("firstName") String firstName);
 

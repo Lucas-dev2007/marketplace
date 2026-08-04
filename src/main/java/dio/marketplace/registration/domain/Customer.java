@@ -9,7 +9,7 @@ public class Customer {
     private String name;
     private String email;
 
-    public Customer(CustomerId id, String Name, String email){
+    public Customer(CustomerId id, String name, String email){
         Assert.notNull(name, "Name must not be null");
         Assert.notNull(email, "Email must not be null");
 

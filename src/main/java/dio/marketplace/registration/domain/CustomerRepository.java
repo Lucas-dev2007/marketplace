@@ -2,7 +2,7 @@ package dio.marketplace.registration.domain;
 
 import java.util.List;
 
-public interface CustumerRepository {
+public interface CustomerRepository {
     Customer save(Customer customer);
-    List<Customer> FindALL();
+    List<Customer> findAll();
 }
