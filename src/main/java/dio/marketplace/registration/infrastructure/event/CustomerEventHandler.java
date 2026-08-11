@@ -1,4 +1,4 @@
-package dio.marketplace.registration.infrastructure.persistence.event;
+package dio.marketplace.registration.infrastructure.event;
 
 import dio.marketplace.registration.infrastructure.persistence.entity.Customer;
 import org.slf4j.Logger;
