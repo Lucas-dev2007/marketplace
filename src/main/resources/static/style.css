@@ -1,0 +1,258 @@
+:root {
+    --azul: #14324f;
+    --azul-claro: #1e4a73;
+    --destaque: #0f766e;
+    --texto: #1f2933;
+    --cinza: #5b6773;
+    --borda: #d7dee5;
+    --fundo: #f5f7fa;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--texto);
+    background: var(--fundo);
+    line-height: 1.5;
+}
+
+.cabecalho {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: end;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: var(--azul);
+    color: #fff;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.subtitulo {
+    margin: 0.15rem 0 0;
+    color: #c7d6e4;
+    font-size: 0.9rem;
+}
+
+.login {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.login label {
+    font-size: 0.85rem;
+    color: #c7d6e4;
+}
+
+input, select, button {
+    font: inherit;
+    padding: 0.45rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--borda);
+}
+
+.login input {
+    width: 8.5rem;
+}
+
+button {
+    background: var(--destaque);
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #f0b429;
+    outline-offset: 1px;
+}
+
+button.secundario {
+    background: #e4e9ee;
+    color: var(--texto);
+}
+
+main {
+    padding: 1.25rem 1.5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.abas {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.aba {
+    background: #e4e9ee;
+    color: var(--texto);
+}
+
+.aba.ativa {
+    background: var(--azul-claro);
+    color: #fff;
+}
+
+.filtro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: end;
+    margin-bottom: 1rem;
+}
+
+.grade {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.produto {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.produto h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.produto .marca {
+    color: var(--cinza);
+    font-size: 0.85rem;
+}
+
+.produto .preco {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--azul);
+}
+
+.produto .estoque {
+    font-size: 0.8rem;
+    color: var(--cinza);
+}
+
+.carrinho {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    width: min(320px, calc(100vw - 2rem));
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 12px 30px rgba(20, 50, 79, 0.18);
+}
+
+.carrinho h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+}
+
+.carrinho ul {
+    list-style: none;
+    margin: 0 0 0.5rem;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+    max-height: 180px;
+    overflow: auto;
+}
+
+.carrinho li {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.carrinho .total {
+    margin: 0.5rem 0;
+}
+
+.carrinho button {
+    width: 100%;
+    margin-top: 0.4rem;
+}
+
+.carrinho select, .carrinho label {
+    width: 100%;
+}
+
+.aviso {
+    color: var(--cinza);
+    font-size: 0.9rem;
+    min-height: 1.2rem;
+}
+
+.aviso.erro {
+    color: #a4231f;
+}
+
+.status {
+    font-size: 0.85rem;
+    color: #c7d6e4;
+}
+
+.pedido {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.pedido header {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.pedido .rotulo {
+    font-size: 0.8rem;
+    color: var(--cinza);
+}
+
+.pedido ul {
+    margin: 0.4rem 0;
+    padding-left: 1.1rem;
+}
+
+.formulario {
+    display: grid;
+    gap: 0.4rem;
+    max-width: 420px;
+}
+
+@media (max-width: 640px) {
+    .carrinho {
+        position: static;
+        width: auto;
+        margin: 0 1rem 2rem;
+    }
+}

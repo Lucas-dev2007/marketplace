@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mercado Tech — loja de demonstração</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="cabecalho">
+    <div>
+        <h1>Mercado Tech</h1>
+        <p class="subtitulo">Loja de demonstração do marketplace</p>
+    </div>
+
+    <form id="form-login" class="login">
+        <label for="usuario">Usuário</label>
+        <input id="usuario" name="usuario" autocomplete="username" value="admin" required>
+
+        <label for="senha">Senha</label>
+        <input id="senha" name="senha" type="password" autocomplete="current-password" value="admin" required>
+
+        <button type="submit">Entrar</button>
+        <span id="status-login" class="status" role="status" aria-live="polite"></span>
+    </form>
+</header>
+
+<main id="loja" hidden>
+
+    <nav class="abas" aria-label="Seções da loja">
+        <button type="button" class="aba ativa" data-secao="catalogo">Catálogo</button>
+        <button type="button" class="aba" data-secao="pedidos">Meus pedidos</button>
+        <button type="button" class="aba" data-secao="clientes" id="aba-clientes" hidden>Clientes</button>
+    </nav>
+
+    <section id="secao-catalogo">
+        <form id="form-filtro" class="filtro">
+            <label for="busca">Buscar produto</label>
+            <input id="busca" placeholder="Ex.: notebook">
+            <label for="categoria">Categoria</label>
+            <select id="categoria">
+                <option value="">Todas</option>
+                <option value="NOTEBOOK">Notebook</option>
+                <option value="CELULAR">Celular</option>
+                <option value="TABLET">Tablet</option>
+                <option value="FONE">Fone</option>
+                <option value="SMARTWATCH">Smartwatch</option>
+                <option value="ACESSORIO">Acessório</option>
+            </select>
+            <button type="submit">Filtrar</button>
+        </form>
+
+        <p id="aviso-catalogo" class="aviso" role="status" aria-live="polite"></p>
+
+        <div id="produtos" class="grade"></div>
+    </section>
+
+    <section id="secao-pedidos" hidden>
+        <h2>Meus pedidos</h2>
+        <p id="aviso-pedidos" class="aviso" role="status" aria-live="polite"></p>
+        <div id="pedidos"></div>
+    </section>
+
+    <section id="secao-clientes" hidden>
+        <h2>Clientes</h2>
+        <p class="aviso">Somente o perfil <strong>admin</strong> enxerga dados de cliente.</p>
+        <div id="clientes"></div>
+
+        <h3>Cadastrar cliente</h3>
+        <form id="form-cliente" class="formulario">
+            <label for="nome">Nome</label><input id="nome" required>
+            <label for="sobrenome">Sobrenome</label><input id="sobrenome">
+            <label for="email">E-mail</label><input id="email" type="email" required>
+            <label for="rua">Rua e número</label><input id="rua">
+            <label for="cep">CEP</label><input id="cep">
+            <label for="cidade">Cidade</label><input id="cidade">
+            <label for="estado">Estado</label><input id="estado" maxlength="2" placeholder="SP">
+            <button type="submit">Cadastrar</button>
+            <span id="aviso-cliente" class="status" role="status" aria-live="polite"></span>
+        </form>
+    </section>
+
+</main>
+
+<aside id="carrinho" class="carrinho" hidden aria-label="Carrinho de compras">
+    <h2>Carrinho</h2>
+    <ul id="itens-carrinho"></ul>
+    <p class="total">Total: <strong id="total-carrinho">R$ 0,00</strong></p>
+
+    <p id="comprando-como" class="aviso"></p>
+
+    <label for="cliente-pedido" id="rotulo-cliente">Cliente</label>
+    <select id="cliente-pedido"></select>
+    <p id="aviso-carrinho" class="aviso" role="status" aria-live="polite"></p>
+
+    <button type="button" id="fechar-pedido">Fechar pedido</button>
+    <button type="button" id="limpar-carrinho" class="secundario">Limpar</button>
+</aside>
+
+<script src="/app.js"></script>
+</body>
+</html>
