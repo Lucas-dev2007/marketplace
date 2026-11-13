@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+
+    # Os mesmos dois MySQL do docker-compose.yml, mas como serviços do runner.
+    # As portas precisam ser 3307 e 3308 porque é isso que application.properties
+    # usa por padrão.
+    services:
+      registration:
+        image: mysql:9.6
+        env:
+          MYSQL_DATABASE: registration
+          MYSQL_USER: app
+          MYSQL_PASSWORD: app
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3307:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -uapp -papp"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+      catalog:
+        image: mysql:9.6
+        env:
+          MYSQL_DATABASE: catalog
+          MYSQL_USER: app
+          MYSQL_PASSWORD: app
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3308:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -uapp -papp"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - name: Configurar Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Rodar os testes
+        run: ./gradlew test --console=plain
+
+      - name: Guardar o relatório de testes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-de-testes
+          path: build/reports/tests/test
